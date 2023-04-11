@@ -1,9 +1,14 @@
+import os
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 # Set up the authentication credentials
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="xx",
-                                               client_secret="yy",
+
+client_id = os.environ.get('CLIENTID')
+client_secret = os.environ.get('CLIENTSECRET')
+
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
+                                               client_secret=client_secret,
                                                redirect_uri="https://localhost:8080/callback",
                                                scope="user-top-read"))
 
